@@ -1,0 +1,41 @@
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    color: var(--light-gray-color);
+    width: 300px;
+    height: 100%;
+
+    &__row{
+        display: flex;
+       width: 100%;
+       align-items: center;
+    }
+    &__row--selected{
+        background-image: white;
+    }
+    &__row p{
+        width: 100%;
+        align-items: start;
+    }
+    &__col{
+        display: flex;
+        flex-direction: column;
+
+        p{
+            margin: 0;
+        }
+
+    }
+    &__img{
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        padding: 4px;
+        border: 2px solid var(--light-gray-color);
+    }
+
+    &--align{
+        align-items: center;
+        justify-content: space-evenly;
+    }
+}
