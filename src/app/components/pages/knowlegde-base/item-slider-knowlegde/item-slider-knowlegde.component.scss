@@ -1,0 +1,16 @@
+.wrapper {
+  display: flex;
+  max-width: 50%;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 15rem;
+  height: 5rem;
+  padding: 10px;
+  border-radius: 10px;
+  justify-content: space-evenly;
+  margin-right: 10px;
+}

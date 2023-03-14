@@ -1,1 +1,28 @@
-<p>item-slider-knowlegde works!</p>
+<div class="wrapper" *ngIf="sliders.length > 0">
+  <div
+    class="card"
+    [ngStyle]="{ 'background-color': slider.colorBackg }"
+    *ngFor="let slider of sliders"
+  >
+    <app-icon
+      [name]="slider.icon"
+      width="30px"
+      height="30px"
+      [color]="slider.colorItems"
+      class="card__folder"
+    ></app-icon>
+    <p
+      class="card__title"
+      [ngStyle]="{ 'color': slider.colorItems }"
+    >
+      {{ slider.name }}
+    </p>
+    <app-icon
+      name="icon-arrow-left"
+      width="20px"
+      height="20px"
+      color="var(--dark-color)"
+      class="card__arrow"
+    ></app-icon>
+  </div>
+</div>
