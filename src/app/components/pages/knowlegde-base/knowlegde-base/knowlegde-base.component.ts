@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { CardItems } from 'src/app/const/cards.const';
 import { SliderItems } from 'src/app/const/sliders.const';
+import { Card } from 'src/app/models/card.interfase';
 import { Slider } from 'src/app/models/slider.interface';
 
 @Component({
@@ -9,6 +11,7 @@ import { Slider } from 'src/app/models/slider.interface';
 })
 export class KnowlegdeBaseComponent {
   sliders: Slider[] = SliderItems;
+  cards:Card[]=CardItems;
 
   constructor() {}
 }

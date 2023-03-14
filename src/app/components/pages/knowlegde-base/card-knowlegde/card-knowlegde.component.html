@@ -1,1 +1,17 @@
-<p>card-knowlegde works!</p>
+<div class="wrapper" *ngIf="cards.length > 0">
+  <div class="card" [ngStyle]="{ 'background-color': card.colorBackg }" *ngFor="let card of cards">
+    <app-icon [name]="card.icon" width="60px" height="60px" [color]="card.colorItems" class="card__icon"></app-icon>
+    <app-icon name="icon-more" width="20px" height="20px" color="var(--dark-color)" class="card__arrow"></app-icon>
+    
+    <p class="card__title" [ngStyle]="{ 'color': card.colorItems }">
+
+      {{ card.name }}
+      speak 20 minutes
+    </p>
+    <!-- <p class="card__title" [ngStyle]="{ 'color': card.colorItems }">
+
+      {{ card.name }}
+    </p> -->
+
+  </div>
+</div>
