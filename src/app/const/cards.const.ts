@@ -1,6 +1,5 @@
 import { Card } from '../models/card.interfase';
 
-
 export const CardItems: Card[] = [
   {
     name: 'Listening',
@@ -13,7 +12,7 @@ export const CardItems: Card[] = [
   {
     name: 'Grammar',
     route: '/',
-    icon: 'icon-microphone',
+    icon: 'icon-edit',
     colorBackg: 'var(--light-gray-color)',
     colorItems: 'var(--danger-color)',
   },
