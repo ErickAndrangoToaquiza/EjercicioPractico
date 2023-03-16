@@ -1,0 +1,29 @@
+<div class="wrapper" *ngIf="cards.length > 0">
+  <div
+    class="card"
+    [ngStyle]="{ 'background-color': card.colorBackg }"
+    *ngFor="let card of cards"
+  >
+    <div class="icons">
+      <app-icon
+        [name]="card.icon"
+        width="60px"
+        height="60px"
+        [color]="card.colorItems"
+      ></app-icon>
+      <app-icon
+        name="icon-more"
+        width="20px"
+        height="20px"
+        color="var(--dark-color)"
+      ></app-icon>
+    </div>
+
+    <h4 class="card__title" [ngStyle]="{ color: card.colorItems }">
+      {{ card.name }}
+    </h4>
+    <small class="card__title" [ngStyle]="{ color: card.colorItems }">
+      {{ card.name }}
+    </small>
+  </div>
+</div>
