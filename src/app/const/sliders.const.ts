@@ -22,11 +22,11 @@ export const SliderItems: Slider[] = [
     colorBackg: 'var(--orange-color)',
     colorItems: 'var(--secondary-color)',
   },
-  // {
-  //   name: 'Sales',
-  //   route: '/',
-  //   icon: 'icon-folder',
-  //   colorBackg: 'var(--green-color)',
-  //   colorItems: 'var(--success-color)',
-  // },
+  {
+    name: 'Sales',
+    route: '/',
+    icon: 'icon-folder',
+    colorBackg: 'var(--green-color)',
+    colorItems: 'var(--success-color)',
+  },
 ];

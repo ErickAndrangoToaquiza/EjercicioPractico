@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { KnowlegdeBaseComponent } from './components/pages/knowlegde-base/knowlegde-base/knowlegde-base.component';
+import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
-    path: 'knowlegde-base',
-    component: KnowlegdeBaseComponent
+    path: 'dashboard',
+    component: DashboardComponent
   }
 ];
 

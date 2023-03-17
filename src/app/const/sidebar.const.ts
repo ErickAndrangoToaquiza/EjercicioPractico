@@ -4,7 +4,7 @@ export const SidebarRoutes: SidebarRoutesInterface[] = [
   
     {
         name: "Dashboard",
-        route: "/knowlegde-base",
+        route: "/dashboard",
         icon: "icon-dashboard",
         userRoles: [1,2]
     },
