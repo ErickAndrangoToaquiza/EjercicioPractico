@@ -13,6 +13,7 @@ import { LastShiftsComponent } from './components/pages/last-shifts/last-shifts.
 import { KnowlegdeBaseComponent } from './components/pages/knowlegde-base/knowlegde-base/knowlegde-base.component';
 import { CardKnowlegdeComponent } from './components/pages/knowlegde-base/card-knowlegde/card-knowlegde.component';
 import { ItemSliderKnowlegdeComponent } from './components/pages/knowlegde-base/item-slider-knowlegde/item-slider-knowlegde.component';
+import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ItemSliderKnowlegdeComponent } from './components/pages/knowlegde-base/
     LastShiftsComponent,
     CardKnowlegdeComponent,
     ItemSliderKnowlegdeComponent,
+    DashboardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, SidebarComponent, IconComponent],
   providers: [],
