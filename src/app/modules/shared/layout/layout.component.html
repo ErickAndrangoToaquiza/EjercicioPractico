@@ -2,7 +2,14 @@
   <app-sidebar class="layout__sidebar"></app-sidebar>
   <main class="layout__main">
     <nav class="header">
-      <app-header user="Steve"></app-header>
+      <app-icon name="icon-menu"></app-icon> 
+      <div>
+        <app-header user="Steve"></app-header>
+        <p class="header__greatings">Good Morning,👋</p>
+      </div>
+      <div><a class="header__btn-logout"><app-icon name="icon-door"></app-icon></a>
+      </div>
+      
     </nav>
     <router-outlet></router-outlet>
   </main>

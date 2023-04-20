@@ -9,6 +9,8 @@ import { TopDriversComponent } from './components/pages/top-drivers/top-drivers.
 import { SidebarComponent } from './modules/shared/components/sidebar/sidebar.component';
 import { IconComponent } from './modules/shared/icon/icon.component';
 import { LayoutComponent } from './modules/shared/layout/layout.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ShiftComponent } from './modules/shift/shift.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { LayoutComponent } from './modules/shared/layout/layout.component';
     SidebarComponent,
     IconComponent,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

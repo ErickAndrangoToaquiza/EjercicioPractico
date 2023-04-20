@@ -22,6 +22,25 @@ const routes: Routes = [
         loadChildren: () =>
           import('@modules/rides/rides.module').then((m) => m.RidesModule),
       },
+      {
+        path: 'clients',
+        loadChildren: () =>
+          import('@modules/clients/clients.module').then(
+            (m) => m.ClientsModule
+          ),
+      },
+      {
+        path: 'shift',
+        loadChildren: () =>
+          import('@modules/shift/shift.module').then((m) => m.ShiftModule),
+      },
+      {
+        path: 'moderators',
+        loadChildren: () =>
+          import('@modules/moderator/moderator.module').then(
+            (m) => m.ModeratorModule
+          ),
+      },
     ],
   },
 ];

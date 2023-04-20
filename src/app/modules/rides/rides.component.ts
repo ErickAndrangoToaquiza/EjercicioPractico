@@ -12,11 +12,13 @@ import { RidesService } from 'src/app/services/rides.service';
 })
 export class RidesComponent {
   ridesList$: Observable<Ride[]> = new Observable<Ride[]>();
-  previous: boolean = false;
+  previous: boolean = true;
   next: boolean = false;
   current: number = 1;
   dataRides$: BehaviorSubject<{ page: number; size: number }> =
     new BehaviorSubject<{ page: number; size: number }>({ page: 1, size: 5 });
+
+    
   constructor(private ridesService: RidesService) {
     this.ridesList$ = this.dataRides$.pipe(
       switchMap(({ page, size }) => this.ridesService.getRideList(page, size)),

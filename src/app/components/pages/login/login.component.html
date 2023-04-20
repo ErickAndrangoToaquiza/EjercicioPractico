@@ -1,32 +1,108 @@
 <div class="container-login">
-    <div class="container-login__image">
-        <img class="container-login__background-login" src="https://img.freepik.com/vector-gratis/fondo-vista-acuarela-montana_52683-24633.jpg?w=996&t=st=1677625947~exp=1677626547~hmac=c8385d54995abbcf86f3091651935f98bc12d42bf50337955fd702a30abf1e04" alt="background_login">
+  <div class="container-login__image">
+    <img
+      class="container-login__background-login"
+      src="https://img.freepik.com/vector-gratis/fondo-vista-acuarela-montana_52683-24633.jpg?w=996&t=st=1677625947~exp=1677626547~hmac=c8385d54995abbcf86f3091651935f98bc12d42bf50337955fd702a30abf1e04"
+      alt="background_login"
+    />
+  </div>
+  <div class="form">
+    <div class="form__header">
+      <img
+        class="form__logo"
+        src="https://img.freepik.com/vector-gratis/diseno-logotipo-icono-montana-verde_474888-1986.jpg?w=740&t=st=1677626347~exp=1677626947~hmac=0172b3a1fcdf2093ac7ce6ae563c107c364b8c54fade08a65badb558c9d2d3ef"
+        alt="logo_login"
+      />
+      <div class="form__title">Log In to Admin Panel</div>
+      <div class="form__subtitle">
+        Enter your phone number and password below
+      </div>
     </div>
-    <div class="form">
-        <div class="form__header">
-            <img class="form__logo" src="https://img.freepik.com/vector-gratis/diseno-logotipo-icono-montana-verde_474888-1986.jpg?w=740&t=st=1677626347~exp=1677626947~hmac=0172b3a1fcdf2093ac7ce6ae563c107c364b8c54fade08a65badb558c9d2d3ef" alt="logo_login">
-            <div class="form__title">Log In to Admin Panel</div>
-            <div class="form__subtitle">Enter your phone number and password below</div>
+    <div class="form__body">
+      <form action="" [formGroup]="credentialsFormGroup" (ngSubmit)="singIn()">
+        <div class="input-group">
+          <label for="PHONE NUMBER" class="input-group__label"
+            >PHONE NUMBER</label
+          >
+          <input
+            formControlName="phone"
+            type="text"
+            maxlength="13"
+            (keyup)="onOnlyNumbers()"
+            class="input-group__input"
+            placeholder="Enter your phone number"
+            [class.input-group__input--invalid]="(phoneNumber.errors?.['required'] && phoneNumber.touched)"
+          />
+          <small
+            class="input-group--invalid"
+            *ngIf="(phoneNumber.errors?.['required'] && phoneNumber.touched)"
+            >El número de teléfono es requerido</small
+          >
+
+          <small
+            class="input-group--invalid"
+            *ngIf="onlyNumbers"
+            >El número de teléfono es inválido</small
+          >
+
+          <small
+            class="input-group--invalid"
+            *ngIf="(phoneNumber.errors?.['minlength'])"
+            >El mínimo número de teléfono es
+            {{phoneNumber.errors?.['minlength'].requiredLength}}
+          </small>
         </div>
-        <div class="form__body">
-            <form action="">
-                <div class="input-group">
-                    <label for="PHONE NUMBER" class="input-group__label">PHONE NUMBER</label>
-                    <input type="text" class="input-group__input" placeholder="Enter your phone number" [class.input-group__input--invalid]="false" >
-                    <small class="input-group--invalid" *ngIf="false">Invalid Phone Number</small>
-                </div>
-                <div class="input-group">
-                    <label for="PASSWORD" class="input-group__label">PASSWORD</label>
-                    <input type="password" class="input-group__input" placeholder="Enter your password" [class.input-group__input--invalid]="false">
-                    <small class="input-group--invalid" *ngIf="false">Invalid Password</small>
-                </div>
-                <div class="form-submit">
-                    <button type="submit" class="form-submit__btn"><img *ngIf="false" class="form-submit__loading" src="https://media3.giphy.com/media/3o7bu3XilJ5BOiSGic/giphy.gif?cid=6c09b9526a8hzy9fotaw8qnanfed458puff09thuf1a9joc0&rid=giphy.gif&ct=g"> Log In</button>
-                </div>
-            </form>
+        <div class="input-group">
+          <label for="PASSWORD" class="input-group__label">PASSWORD</label>
+          <input
+            formControlName="password"
+            (keyup)="validatorPassword()"
+            type="password"
+            class="input-group__input"
+            placeholder="Enter your password"
+            maxlength="50"
+            [class.input-group__input--invalid]="(password.errors?.['required'] && password.touched) || password.errors?.['minlength'] || capitalLetter || hasNumber || caracterSpecial"
+          />
+
+          <small class="input-group--invalid" *ngIf="capitalLetter"
+            >Debe tener un carácter en mayúscula</small
+          >
+
+          <small class="input-group--invalid" *ngIf="hasNumber"
+            >Debe tener un carácter numérico</small
+          >
+
+          <small
+            class="input-group--invalid"
+            *ngIf="password.errors?.['minlength']"
+            >Debe tener mínimo
+            {{password.errors?.['minlength'].requiredLength}} carácteres</small
+          >
+
+          <small class="input-group--invalid" *ngIf="caracterSpecial"
+            >Debe tener un carácter especial.</small
+          >
+
+          <small
+            class="input-group--invalid"
+            *ngIf="password.errors?.['required'] && password.touched"
+            >La contraseña es requerida</small
+          >
         </div>
-        <div class="form__footer">
-            <p>Don't have account? <a class="form__link">Sign up</a></p>
+        <div class="form-submit">
+          <button type="submit" class="form-submit__btn">
+            <img
+              *ngIf="false"
+              class="form-submit__loading"
+              src="https://media3.giphy.com/media/3o7bu3XilJ5BOiSGic/giphy.gif?cid=6c09b9526a8hzy9fotaw8qnanfed458puff09thuf1a9joc0&rid=giphy.gif&ct=g"
+            />
+            Log In
+          </button>
         </div>
+      </form>
     </div>
+    <div class="form__footer">
+      <p>Don't have account? <a class="form__link">Sign up</a></p>
+    </div>
+  </div>
 </div>
