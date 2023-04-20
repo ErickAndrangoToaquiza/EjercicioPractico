@@ -1,4 +1,13 @@
+
+  <div class="alert">
+    <p class="alert__danger">
+      Credenciales incorrectas o el usuario no esta registrado...
+    </p>
+  </div>
+
+
 <div class="container-login">
+
   <div class="container-login__image">
     <img
       class="container-login__background-login"
@@ -39,9 +48,7 @@
             >El número de teléfono es requerido</small
           >
 
-          <small
-            class="input-group--invalid"
-            *ngIf="onlyNumbers"
+          <small class="input-group--invalid" *ngIf="onlyNumbers"
             >El número de teléfono es inválido</small
           >
 
@@ -96,7 +103,8 @@
               class="form-submit__loading"
               src="https://media3.giphy.com/media/3o7bu3XilJ5BOiSGic/giphy.gif?cid=6c09b9526a8hzy9fotaw8qnanfed458puff09thuf1a9joc0&rid=giphy.gif&ct=g"
             />
-            Log In
+
+            {{ isLoading ? "Espere..." : "Log In" }}
           </button>
         </div>
       </form>

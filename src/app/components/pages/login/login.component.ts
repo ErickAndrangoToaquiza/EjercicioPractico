@@ -5,6 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Observable, tap } from 'rxjs';
+import { User } from 'src/app/models/user.interface';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +21,9 @@ export class LoginComponent {
   hasNumber: boolean = false;
   caracterSpecial: boolean = false;
   onlyNumbers: boolean = false;
-  constructor(private injector: Injector) {
+  userLogin!: Observable<User[] | null>;
+  isLoading: boolean = false;
+  constructor(private injector: Injector, private loginService: LoginService) {
     this.formBuilder = injector.get(FormBuilder);
     this.setBuild();
   }
@@ -31,9 +36,9 @@ export class LoginComponent {
   }
 
   validatorPassword() {
-    this.capitalLetter = this.password.value.match(/[A-Z]/) ? false : true;
-    this.hasNumber = this.password.value.match(/\d/) ? false : true;
-    this.caracterSpecial = this.password.value.match(/[!@#$%^&*.]/)
+    this.capitalLetter = this.password.value?.match(/[A-Z]/) ? false : true;
+    this.hasNumber = this.password.value?.match(/\d/) ? false : true;
+    this.caracterSpecial = this.password.value?.match(/[!@#$%^&*.]/)
       ? false
       : true;
   }
@@ -46,15 +51,23 @@ export class LoginComponent {
     if (firstNumber === '0' && this.phoneNumber.value.length === 1) {
       this.phoneNumber.setValue('09');
     }
-    if (
-      (firstNumber === '+' || firstNumber === '5') &&
-      this.phoneNumber.value.length === 1
-    ) {
-      this.phoneNumber.setValue('+593');
+    if (firstNumber === '5' && this.phoneNumber.value.length === 1) {
+      this.phoneNumber.setValue('593');
     }
   }
 
-  singIn() {}
+  singIn() {
+    this.credentialsFormGroup.markAllAsTouched();
+    if (this.credentialsFormGroup.invalid) return;
+
+    console.log(this.getValues());
+    this.isLoading = true;
+    this.userLogin = this.loginService
+      .signInUser(this.getValues())
+      .pipe(tap(() => (this.isLoading = false)));
+
+    this.userLogin.subscribe((data) => console.log('data', data));
+  }
 
   getValues() {
     const { phone, password } = this.credentialsFormGroup.getRawValue();
