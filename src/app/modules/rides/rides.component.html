@@ -1,0 +1,69 @@
+<div class="flex">
+  <div class="table-wrapper">
+    <!-- <app-progresivebar-rides></app-progresivebar-rides> -->
+    <table>
+      <thead>
+        <tr>
+          <th><input type="checkbox" /></th>
+          <th>User</th>
+          <th>Car Comfort</th>
+          <th>Ordered Time</th>
+          <th>Start Location</th>
+          <th>Finish Location</th>
+          <th>Income</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="ridesList$ | async as rides">
+        <tr *ngFor="let ride of rides">
+          <td><input type="checkbox" /></td>
+
+          <td class="column">
+            <div class="column__avatar-column">
+              <img [src]="ride.user.avatar" />
+            </div>
+            <div class="column__avatar-container">
+              <span>{{ ride.user.name }} </span>
+              <span>{{ ride.user.phone }} </span>
+            </div>
+          </td>
+          <td>{{ ride.car_comfort }}</td>
+          <td>{{ ride.ordered_time }}</td>
+          <td>{{ ride.start_location }}</td>
+          <td>{{ ride.finish_location }}</td>
+          <td class="income">
+            <div class="income__decoration">
+              {{ ride.income }}
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pagination">
+      <button
+        type="button"
+        (click)="nextPage(current - 1)"
+        [disabled]="previous"
+      >
+        <
+      </button>
+      <button
+        [ngClass]="{ 'button-active': current === 1 }"
+        type="button"
+        (click)="nextPage(1)"
+      >
+        1
+      </button>
+      <button
+        type="button"
+        (click)="nextPage(2)"
+        [ngClass]="{ 'button-active': current === 2 }"
+      >
+        2
+      </button>
+      <button type="button" (click)="nextPage(current + 1)" [disabled]="next">
+        >
+      </button>
+    </div>
+  </div>
+  <div></div>
+</div>

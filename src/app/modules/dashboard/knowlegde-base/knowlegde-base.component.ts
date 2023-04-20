@@ -7,11 +7,9 @@ import { Slider } from 'src/app/models/slider.interface';
 @Component({
   selector: 'app-knowlegde-base',
   templateUrl: './knowlegde-base.component.html',
-  styleUrls: ['./knowlegde-base.component.scss'],
+  styleUrls: ['./knowlegde-base.component.scss']
 })
 export class KnowlegdeBaseComponent {
   sliders: Slider[] = SliderItems;
   cards:Card[]=CardItems;
-
-  constructor() {}
 }
