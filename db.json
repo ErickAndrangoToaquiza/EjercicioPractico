@@ -1,26 +1,26 @@
 {
     "users": [
       {
-        "email": "steve@mail.com",
+        "email": "jvargasn@gmail.com",
         "password": "Abcdefg1.",
         "role": "Admin",
-        "firstName": "Steve",
-        "lastName": "Jimbo",
-        "age": 24,
+        "firstName": "Jonathan",
+        "lastName": "Vargas",
+        "age": 26,
         "identification": "1726725318",
         "id": 1,
         "phone": "0983774891"
       },
       {
-        "email": "bryan@mail.com",
+        "email": "erandran@gmail.com",
         "password": "Abcdefg1.",
         "role": "Visitor",
-        "firstName": "Bryan",
-        "lastName": "Ron",
+        "firstName": "Erick",
+        "lastName": "Andrango",
         "age": 26,
-        "identification": "1723452319",
+        "identification": "1723968663",
         "id": 2,
-        "phone": "593984024347"
+        "phone": "0979355370"
       }
     ],
     "rides": [
