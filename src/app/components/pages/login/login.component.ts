@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
 import { User } from 'src/app/models/user.interface';
 import { LoginService } from 'src/app/services/login.service';
@@ -17,14 +18,17 @@ import { LoginService } from 'src/app/services/login.service';
 export class LoginComponent {
   credentialsFormGroup!: FormGroup;
   private formBuilder!: FormBuilder;
+  private router!: Router;
   capitalLetter: boolean = false;
   hasNumber: boolean = false;
   caracterSpecial: boolean = false;
   onlyNumbers: boolean = false;
   userLogin!: Observable<User[] | null>;
   isLoading: boolean = false;
+  userNotExist: boolean = false;
   constructor(private injector: Injector, private loginService: LoginService) {
     this.formBuilder = injector.get(FormBuilder);
+    this.router = injector.get(Router);
     this.setBuild();
   }
 
@@ -44,7 +48,7 @@ export class LoginComponent {
   }
 
   onOnlyNumbers() {
-    this.onlyNumbers = this.phoneNumber.value.match(/[0-9]+/) ? false : true;
+    this.onlyNumbers = this.phoneNumber.value?.match(/[0-9]+/) ? false : true;
 
     const firstNumber: string = this.phoneNumber.value.charAt(0);
 
@@ -60,13 +64,18 @@ export class LoginComponent {
     this.credentialsFormGroup.markAllAsTouched();
     if (this.credentialsFormGroup.invalid) return;
 
-    console.log(this.getValues());
     this.isLoading = true;
-    this.userLogin = this.loginService
-      .signInUser(this.getValues())
-      .pipe(tap(() => (this.isLoading = false)));
+    this.loginService.signInUser(this.getValues()).subscribe((user) => {
+      this.isLoading = false;
 
-    this.userLogin.subscribe((data) => console.log('data', data));
+      if (!user) {
+        this.userNotExist = true;
+      } else {
+        this.userNotExist = false;
+        localStorage.setItem('user', JSON.stringify(user[0]));
+        this.router.navigate(['/dashboard']);
+      }
+    });
   }
 
   getValues() {
