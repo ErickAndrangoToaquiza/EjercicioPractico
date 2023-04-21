@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IconComponent } from '@modules/shared/icon/icon.component';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 import { DashboardComponent } from './dashboard.component';
 import { CardKnowlegdeComponent } from './knowlegde-base/card-knowlegde/card-knowlegde.component';
 import { ItemSliderKnowlegdeComponent } from './knowlegde-base/item-slider-knowlegde/item-slider-knowlegde.component';
